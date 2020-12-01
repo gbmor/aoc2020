@@ -24,10 +24,10 @@ func newExpenseReport(test bool) ExpenseReport {
 
 	b, _ := ioutil.ReadFile("input.txt")
 	lines := strings.Split(string(b), "\n")
-	out := make(ExpenseReport, 0)
-	for _, l := range lines {
+	out := make(ExpenseReport, len(lines))
+	for i, l := range lines {
 		n, _ := strconv.Atoi(l)
-		out = append(out, n)
+		out[i] = n
 	}
 	return out
 }
