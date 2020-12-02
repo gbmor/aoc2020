@@ -3,7 +3,6 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
-	"strconv"
 	"strings"
 	"time"
 )
@@ -21,13 +20,13 @@ func getInput(test bool) []string {
 }
 
 func parse(line string) (int, int, rune, string) {
-	fields := strings.Fields(line)
-	password := fields[2]
-	let := rune(fields[1][0])
-	rangesStr := strings.Split(fields[0], "-")
-	low, _ := strconv.Atoi(rangesStr[0])
-	high, _ := strconv.Atoi(rangesStr[1])
-	return low, high, let, password
+	var low, high int
+	var lets, pass string
+	_, err := fmt.Sscanf(line, "%d-%d %s %s", &low, &high, &lets, &pass)
+	if err != nil {
+		panic(err)
+	}
+	return low, high, rune(lets[0]), pass
 }
 
 func check(input []string) (int, int) {
