@@ -22,10 +22,7 @@ func getInput(test bool) []string {
 func parse(line string) (int, int, rune, string) {
 	var low, high int
 	var lets, pass string
-	_, err := fmt.Sscanf(line, "%d-%d %s %s", &low, &high, &lets, &pass)
-	if err != nil {
-		panic(err)
-	}
+	fmt.Sscanf(line, "%d-%d %s %s", &low, &high, &lets, &pass)
 	return low, high, rune(lets[0]), pass
 }
 
