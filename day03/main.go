@@ -30,16 +30,13 @@ func getMap(test bool) []string {
 func calc(hillMap []string, dx, dy int) int {
 	var x, y, trees int
 	width := len(hillMap[0])
-	for {
+	for y < len(hillMap) {
 		if hillMap[y][x] == '#' {
 			trees++
 		}
 		x += dx
 		x %= width
 		y += dy
-		if y >= len(hillMap) {
-			break
-		}
 	}
 	return trees
 }
