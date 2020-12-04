@@ -35,9 +35,7 @@ func calc(hillMap []string, dx, dy int) int {
 			trees++
 		}
 		x += dx
-		if x >= width {
-			x -= width
-		}
+		x %= width
 		y += dy
 		if y >= len(hillMap) {
 			break
