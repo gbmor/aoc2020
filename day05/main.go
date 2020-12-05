@@ -56,16 +56,6 @@ func getSeats(s []string) []int {
 	return seatz
 }
 
-func highestSeatID(s []int) int {
-	id := 0
-	for _, i := range s {
-		if i > id {
-			id = i
-		}
-	}
-	return id
-}
-
 func missingSeat(s []int) int {
 	for i := 1; i < len(s); i++ {
 		if s[i-1] != s[i]-1 {
@@ -80,8 +70,7 @@ func main() {
 
 	t := time.Now()
 	s := getSeats(input)
-	out := highestSeatID(s)
-	fmt.Printf("%d, %s\n", out, time.Since(t))
-	out = missingSeat(s)
+	fmt.Printf("%d, %s\n", s[len(s)-1], time.Since(t))
+	out := missingSeat(s)
 	fmt.Printf("%d, %s\n", out, time.Since(t))
 }
