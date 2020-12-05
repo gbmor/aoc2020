@@ -29,8 +29,8 @@ func makeRows(s int) []int {
 }
 
 func getSeats(s []string) []int {
-	seatz := make([]int, 0)
-	for _, v := range s {
+	seatz := make([]int, len(s))
+	for i, v := range s {
 		rows := makeRows(128)
 		seats := makeRows(8)
 		for _, e := range v {
@@ -50,7 +50,7 @@ func getSeats(s []string) []int {
 			}
 		}
 		z := rows[0]*8 + seats[0]
-		seatz = append(seatz, z)
+		seatz[i] = z
 	}
 	sort.Ints(seatz)
 	return seatz
