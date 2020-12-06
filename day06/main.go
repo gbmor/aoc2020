@@ -12,7 +12,7 @@ func getInput() []string {
 	return strings.Split(string(b), "\n\n")
 }
 
-func part1(s []string) (int, int) {
+func calc(s []string) (int, int) {
 	sum := 0
 	p2sum := 0
 	for _, v := range s {
@@ -36,6 +36,6 @@ func part1(s []string) (int, int) {
 func main() {
 	input := getInput()
 	t := time.Now()
-	out, p2 := part1(input)
-	fmt.Printf("P1: %d, P2: %d, %s\n", out, p2, time.Since(t))
+	p1, p2 := calc(input)
+	fmt.Printf("P1: %d, P2: %d, %s\n", p1, p2, time.Since(t))
 }
