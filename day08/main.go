@@ -29,7 +29,8 @@ func getInput(test bool) []string {
 func ACCBeforeFirstRepeat(s []string) (int, int) {
 	acc := 0
 	hist := make(map[int]int)
-	for i := 0; i < len(s); {
+	i := 0
+	for i < len(s) {
 		if hist[i] > 0 {
 			return acc, -1
 		}
@@ -45,11 +46,8 @@ func ACCBeforeFirstRepeat(s []string) (int, int) {
 		case "nop":
 			i++
 		}
-		if i == len(s) {
-			return acc, i
-		}
 	}
-	return -1, -1
+	return acc, i
 }
 
 func ACCAfterEnd(s []string) int {
