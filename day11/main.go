@@ -131,14 +131,15 @@ func exec2(s [][]rune) ([][]rune, int) {
 			if f == '.' {
 				continue
 			}
-			nearby := lineOfSight(s, j, 1, i, 0)
-			nearby += lineOfSight(s, j, -1, i, 0)
-			nearby += lineOfSight(s, j, 0, i, 1)
-			nearby += lineOfSight(s, j, 0, i, -1)
-			nearby += lineOfSight(s, j, 1, i, 1)
-			nearby += lineOfSight(s, j, 1, i, -1)
-			nearby += lineOfSight(s, j, -1, i, -1)
-			nearby += lineOfSight(s, j, -1, i, 1)
+			nearby := 0
+			for x := -1; x < 2; x++ {
+				for y := -1; y < 2; y++ {
+					if x == 0 && y == 0 {
+						continue
+					}
+					nearby += lineOfSight(s, j, x, i, y)
+				}
+			}
 			if f == 'L' && nearby == 0 {
 				current[i][j] = '#'
 				diffs++
