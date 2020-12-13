@@ -45,29 +45,14 @@ func getSchedule(test bool) (int, []int) {
 }
 
 func part1(d int, b []int) int {
-	firstPast := make([]int, len(b))
-	for i, e := range b {
-		if e == 0 {
-			continue
-		}
-		dist := 0
-		for dist < d {
-			dist += e
-		}
-		firstPast[i] = dist
-	}
-	lowest := firstPast[0]
-	id := 0
-	for i, e := range firstPast {
-		if e == 0 {
-			continue
-		}
-		if e < lowest {
-			lowest = e
-			id = i
+	for i := d; i > 0; i++ {
+		for _, c := range b {
+			if c != 0 && i%c == 0 {
+				return (i - d) * c
+			}
 		}
 	}
-	return b[id] * (lowest - d)
+	return -1
 }
 
 func crt(a, n []*big.Int) *big.Int {
